@@ -1,0 +1,23 @@
+AllCops:
+  Exclude:
+    - test/**/*
+
+AlignParameters:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Encoding:
+  Enabled: false
+
+LineLength:
+  Max: 200
+
+HashSyntax:
+  EnforcedStyle: hash_rockets
+  Exclude:
+    - Thorfile
+
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false

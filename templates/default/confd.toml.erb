@@ -1,0 +1,4 @@
+backend = "<%= node['confd']['backend'] %>"
+interval = <%= node['confd']['interval'] %>
+nodes = [<%= node['confd']['nodes'].map { |val| "\"#{val}\"" }.join(',') %>]
+log-level = "<%= node['confd']['log-level'] %>"

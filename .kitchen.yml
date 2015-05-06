@@ -1,0 +1,29 @@
+---
+driver_plugin: ec2
+driver_config:
+  aws_access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+  aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  aws_ssh_key_id: <%= ENV['AWS_KEYPAIR_NAME'] %>
+
+provisioner:
+  name: chef_zero
+
+platforms:
+- name: ec2
+  driver_plugin: ec2
+  driver_config:
+    username: ubuntu
+    image_id: <%= ENV['DEFAULT_IMAGE'] %>
+    ssh_key: <%= ENV['AWS_PRIVATE_KEY_PATH'] %>
+
+suites:
+  - name: consul
+    run_list:
+      - recipe[apt]
+      - recipe[confd_test::consul]
+    attributes:
+  - name: etcd
+    run_list:
+      - recipe[apt]
+      - recipe[confd_test::etcd]
+    attributes:
